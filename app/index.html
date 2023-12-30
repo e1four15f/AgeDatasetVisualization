@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Journey of Over a Million Lives</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='50%' x='50%' dy='.35em' text-anchor='middle' style='font-size: 90px;'>🌎</text></svg>">
+    <script type="module" src="public/app.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/globe.gl@2.32.1/dist/globe.gl.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.js"></script>
+    <link rel="stylesheet" href="public/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.css">
+</head>
+<body>
+    <div id="spinner" class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh">
+        <h1 class="mb-3">Journey of Over a Million Lives 🌎</h1>
+        <div class="spinner-grow text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <div id="tooltip"></div>
+
+    <h1 id="title">Journey of Over a Million Lives 🌎</h1>
+    <div id="legend">
+        <h4>Country rank by number of records</h4>
+        <div class="row">
+            <div id="colorScale"></div>
+            <div id="topCountries" style="margin-left: 5px"></div>
+        </div>
+    </div>
+    <div id="filter">
+        <h4>Filters</h4>
+
+        <div id="sex-filter">
+            <hr>
+            <label class="d-block">Sex</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Male">
+                <label class="form-check-label">Male</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Female">
+                <label class="form-check-label">Female</label>
+            </div>
+        </div>
+
+        <div id="occupation-filter">
+            <hr>
+            <label class="d-block">Occupation</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Art">
+                <label class="form-check-label">Art</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Politics">
+                <label class="form-check-label">Politics</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Sports">
+                <label class="form-check-label">Sports</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Science">
+                <label class="form-check-label">Science</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Business">
+                <label class="form-check-label">Business</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Social">
+                <label class="form-check-label">Social</label>
+            </div>
+        </div>
+    </div>
+
+    <div id="content" class="mt-12 container-fluid" style="display:none;">
+        <div class="row" style="height: 88vh">
+            <div id="left" class="col-md-6 mt-6">
+                <div id="map"></div>
+            </div>
+            <div id="right" class="col-md-6 mt-6 overlay-content">
+                <div id="heatmap"></div>
+                <div id="boxplot"></div>
+            </div>
+        </div>
+        <div class="row overlay-content" style="height: 12vh">
+            <div class="col-md-1 mt-1"></div>
+            <div class="col-md-1 mt-1">
+                <h2 style="margin-top: 1vh">Years:</h2>
+            </div>
+            <div class="col-md-8 mt-8">
+                <div id="yearSlider" class="slider-styled" style="margin-top: 40px"></div>
+            </div>
+            <div class="col-md-1 mt-1">
+                <button id="autoScrollButton" style="margin-top: 2vh">Play</button>
+            </div>
+            <div class="col-md-1 mt-1"></div>
+        </div>
+    </div>
+</body>
+</html>
