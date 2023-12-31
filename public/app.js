@@ -881,6 +881,9 @@ function update() {
 function contentLoaded() {
     document.getElementById('spinner').remove();
     document.getElementById('content').style.display = 'block';
+    document.getElementById('title').style.display = 'block';
+    document.getElementById('legend').style.display = 'block';
+    document.getElementById('filter').style.display = 'block';
 }
 
 (() => {

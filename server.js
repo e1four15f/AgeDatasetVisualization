@@ -3,6 +3,13 @@ const app = express()
 const port = 3000
 
 app.use(express.static('public'))
+app.use((req, res, next) => {
+    if (req.path.endsWith('.js')) {
+        res.type('application/javascript');
+    }
+    next();
+});
+
 app.use('/public', express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => res.sendFile(__dirname + "/index.html"))
