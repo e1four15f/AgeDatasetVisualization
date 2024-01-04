@@ -385,7 +385,7 @@ function mergeTooltips(slider, threshold, separator) {
 
 function initializeTopCountriesScale() {
     // Size of the color scale bar
-    const xPadding = 15;
+    const xPadding = 40;
     const width = 20 + xPadding;
     const height = 250;
     const svg = d3.select("#colorScale")
@@ -404,6 +404,18 @@ function initializeTopCountriesScale() {
         .attr("width", width)
         .attr("height", height / numSamples)
         .attr("fill", d => lifeColorScale(d));
+
+    let y = d3.scaleLinear().domain([100, 1]).range([height - 10, 10]);
+        // Add Y axis
+    svg.append("g")
+        .attr("transform", "translate(" + (xPadding - 10) + ",-5)")
+        .call(d3.axisLeft(y).tickValues([100, 1]));
+    svg.append("text")
+        .attr("text-anchor", "end")
+        .attr("transform", "rotate(-90)")
+        .attr("y", xPadding - 15)
+        .attr("x", -height / 2 + 35)
+        .text("Rank");
 }
 
 
