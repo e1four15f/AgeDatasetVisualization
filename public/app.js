@@ -487,10 +487,20 @@ function updateHeatmap(data) {
         .attr('class', 'grid-text')
         .merge(gridTexts)
         .attr('x', (d, i) => Math.floor(i / deathCategories.length) * cellWidth + xLabelsPadding + cellWidth / 2)
-        .attr('y', (d, i) => cellHeight + (i % deathCategories.length) * cellHeight + yLabelsPadding + cellHeight / 2)
+        .attr('y', (d, i) => cellHeight + (i % deathCategories.length) * cellHeight + yLabelsPadding + cellHeight / 2 - 10)
         .attr('text-anchor', 'middle')
         .attr('dy', '.35em')
         .text(d => d.count);
+    gridTexts.exit().remove();
+    const gridPercTexts = svg.selectAll('.grid-perc-text').data(counts);
+    gridTexts.enter().append('text')
+        .attr('class', 'grid-perc-text')
+        .merge(gridPercTexts)
+        .attr('x', (d, i) => Math.floor(i / deathCategories.length) * cellWidth + xLabelsPadding + cellWidth / 2)
+        .attr('y', (d, i) => cellHeight + (i % deathCategories.length) * cellHeight + yLabelsPadding + cellHeight / 2 + 10)
+        .attr('text-anchor', 'middle')
+        .attr('dy', '.35em')
+        .text(d => totalCount ? Math.floor(d.count / totalCount * 100) + "%" : "0%");
     gridTexts.exit().remove();
 
     // Bind data to rectangles for overall counts
